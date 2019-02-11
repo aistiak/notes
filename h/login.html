@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>login to notes</title>
+
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+    
+    <script type="text/javascript" src="js/util.js"></script>
+	<body>
+
+
+		<div class="form">
+
+
+
+			
+			<div class="form"> 
+
+				<div>
+					<center><h5 id='warning'> <font face="verdana" color="red">no such user </font></h5></center>
+				</div> 	
+
+				<div class="input-group">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+					<input id="userName" type="text" class="form-control" name="userName" placeholder="UserName">
+				</div>
+
+
+				<div class="input-group">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+					<input id="password" type="password" class="form-control" name="password" placeholder="Password">
+				</div>
+
+				<button type="button" id='submit-btn' class="btn btn-primary btn-block">submit</button> 
+			</div>
+
+			
+
+
+
+		</div>
+
+
+	</body>
+	<script type="text/javascript">
+
+
+
+		$(document).ready(function(){
+			console.log('ready');
+			$('#warning').hide();
+
+
+
+			/**/
+
+
+
+		});
+		$('#submit-btn').click(function(){
+			console.log('btn click');
+			$('#warning').show();
+			/*window.location.href = "http://google.com/";*/
+
+			/*get user name and pass */
+
+			var userName = $('#userName').val();
+			var password     = $('#password').val();
+
+
+
+			/*make request to api */
+			$.post(url,{'name':userName,'pas':password},function(data,status){
+				/*if status is ok */
+				if (status == 'success' ){
+
+                   //JSON.parse(data);
+					try{
+						token = data ;
+						console.log('user token : ' + token)
+						
+
+						document.cookie = 'token='+token+';'
+						//document.cookie = 'pas='+password+';'  
+						
+						console.log(getCookie("token"));
+						//console.log(getCookie("pas"));
+						window.location.href ="/app2.html"
+						//window.location.href="file:///home/istiak/Desktop/notes/h/login.html"
+
+					} catch(e){
+						$('#warning').html(data);
+					}
+					
+
+
+				}
+				/*if returnd data is json then go to main-app page */
+			});
+		})
+
+	</script>
+	<style type="text/css">
+
+	.form {
+		position:fixed;
+		top: 50%;
+		left: 50%;
+		width:30em;
+		height:18em;
+		margin-top: -9em; /*set to a negative number 1/2 of your height*/
+		margin-left: -15em; /*set to a negative number 1/2 of your width*/
+		
+		
+	}
+</style>
+
+</html>

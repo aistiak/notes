@@ -1,0 +1,63 @@
+.cards{
+    position: absolute;
+    width: 48%;
+    left: 28%;
+    top: 155px;
+
+}
+
+.card{
+	position: relative;
+	
+	margin-bottom:30px;
+}
+
+html {
+	/*background-image: linear-gradient(to bottom right, white, #9f9f9f);*/
+	height: 100%;
+}
+
+body {
+	/*text-align: center;*/
+	padding: 5rem;
+}
+
+.card {
+	box-shadow: 0rem .5rem 1rem rgba(0,0,0,.3);
+	border-radius: 0.3rem;
+	transition: all .2s ease-in-out;
+	transform: scale(0.95);
+	margin-top: 20px;
+	
+}
+
+.card:hover {
+	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 1rem 2rem rgba(0,0,0,0.2);
+	/*transform: scale(1);*/
+	/*cursor: pointer;*/
+}
+
+.title {
+	font-family: 'Montserrat', sans-serif;
+	/*background-color: goldenrod;*/
+	padding: 2px;
+	border-radius: 0.3rem 0.3rem 0 0;
+}
+
+.pic {
+	max-width: 100%;
+}
+
+.content {
+	padding: 5px;
+}
+
+.small {
+	max-width: 15rem;
+}
+.list{
+
+}
+h4:empty:not(:focus)::before {
+	content: attr(data-placeholder)
+}

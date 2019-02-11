@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>app v2</title>
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.6.4/jquery.contextMenu.min.css">
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript" src="js/util.js"></script>
+	<script type="text/javascript" src="js/notes2.js"></script>
+
+	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="js/methods.js"></script>
+	<script type="text/javascript" src="js/loader.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.6.4/jquery.contextMenu.min.js"></script>
+
+
+</head>
+<body>
+
+	<script type="text/javascript">
+		
+		var config = {
+			apiKey: "AIzaSyDAAsK6tQdCZziz5oZxv5KE7UwDMkwzsWI",
+			authDomain: "notes-5c195.firebaseapp.com",
+			databaseURL: "https://notes-5c195.firebaseio.com",
+			projectId: "notes-5c195",
+			storageBucket: "notes-5c195.appspot.com",
+			messagingSenderId: "882819626983"
+		};
+
+
+
+		firebase.initializeApp(config);
+
+		firebase.auth().signInAnonymously().catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          console.log(error)
+          // ...
+      });
+
+
+
+  </script>
+
+
+  <div class="main-top">
+  	
+  	<button id='logoutbtn' style="right: 12px;position: absolute;top: 13px;">
+  		logout
+  	</button>
+
+  </div>
+  <div class="main-mid" style="position: absolute;     width: 80%;left:12%;top: 100px; ">
+  	<div>
+
+  		<div class="row">
+  			<div class="col-lg-6 col-lg-offset-3">
+  				<div class="input-group">
+  					<input type="text" class="form-control" placeholder="take a note" id="controllerInput"/> 
+  					<span class="input-group-btn">
+  						<button class="btn btn-default" type="button" id="newcard">new</button>
+  					</span>
+  				</div><!-- /input-group -->
+  			</div><!-- /.col-lg-4 -->
+  		</div><!-- /.row -->		
+  	</div>
+
+  </div>
+
+  <script type="text/javascript">
+
+  </script>
+
+
+  <div class="main-bottom">
+  	
+  	<div class="cards" class="content">
+  		
+  	</div>
+
+  </div>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>sign up</title>
+	<script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+  
+ </head>
+<body>
+
+user name : <input  id='name' type="" name="username"><br>
+mail : <input id='mail' type="mail" name="mail"><br>
+password : <input id='pass' type="password" name="password">
+<h3 id='hint'> </h3>
+
+<button id='submit'>submit</button>
+ <div class="varify">
+ 	 enter code hear : <input  id='vcode' type="" name=""> <button id='codebtn' >go</button>
+ </div>
+
+</body>
+<script type="text/javascript">
+	
+  $('.varify').hide() 
+  $('#submit').on('click',function(){
+
+	  var name = $('#name').val()
+	  var mail = $('#mail').val()
+	  var pass = $('#pass').val()
+	  var warn = $('#hint')
+	  warn.html('warnings will be shown hear ')
+
+	  /*post it to server */
+	  var prams = {
+	      'name':name,
+	      'pas':pass,
+	      'email':mail
+	  }
+	  console.log(prams)
+  	    $.post('http://127.0.0.1:8000/api/adduser',prams,function(data){
+        if (data == "ok"){
+        	warn.html("mail has been sent with varification code")
+        }
+
+        $('.varify').show() 
+        
+       //console.log('data : ' + data)
+  })
+  }) 
+
+  $('#codebtn').on('click',function(){
+
+  	 // varify account 
+  	 var mail = $('#mail').val() 
+  	 var code = $('#vcode').val()
+     var pram = {
+     	'mail':mail,
+     	'code':code
+     }
+  	 $.post('http://127.0.0.1:8000/api/varifyuser',pram,function(data){
+  	 	console.log('mail respose : ' + data)
+  	 })
+  })
+
+
+
+
+  /*get respose if all ok redirect to enter code page */
+
+</script>
+</html>

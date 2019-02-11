@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+
+
+	</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.6.4/jquery.contextMenu.min.css">
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.6.4/jquery.contextMenu.min.js"></script>
+	<script type="text/javascript" src=""></script>
+
+
+</head>
+
+
+<body>
+	
+
+	<div id="1" class="btn btn-primary with-cool-menu">
+		btn 1
+	</div>
+
+
+	<div id="2" class="btn btn-secondary with-cool-menu">
+		btn 2
+	</div>
+	
+
+
+	<script type="text/javascript">
+
+		$.contextMenu({
+			selector: ".with-cool-menu",
+			build: function(element, event) {
+				return {
+					callback: function () {},
+					items: {
+						foo: {
+							name: "Foo " + $(element).attr('id'),
+							callback: function(){
+								 console.log($(this));
+
+								
+							}
+							
+						},
+						bar: {
+							name: "Bar"
+
+						}
+					}
+				}
+			}
+		});
+
+	</script>
+
+
+
+</body>
+</html>

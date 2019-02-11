@@ -1,0 +1,18 @@
+
+
+
+#todo
+
+
+#done 
+
+-> account creation methods done with email code varification 
+
+-> resource access andmodification is implemented using token instade of user cedentials 
+-> cros porblem solved by allowin cros for 127.0.0.1 in app settings.py
+
+# for rithu vai
+
+
+-> single and double quoutes in card text area causig problem in parsing
+ 

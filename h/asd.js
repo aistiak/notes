@@ -1,0 +1,31 @@
+var card = $('<div></div>')
+card.addClass('card')
+card.css('text-align','left')
+
+var editOption = $('<div></div>')
+editOption.addClass('edit-option')
+editOption.css({"position":"absolute","right": "5px","top":"0px", "text-align":"right"})
+
+edit_img = $('<img/>')
+edit_img.attr('src','img/editico.png')
+edit_img.attr('width','20px')
+edit_img.attr('data-toggle','tooltip')
+edit_img.attr('title','edit')
+editOption.append(edit_img)
+card.append(editOption)
+
+
+th4 = $('<h4></h4>')
+th4.addClass('editable')
+th4.html('Title')
+tb = $('<b></b>')
+tb.append(th4)
+tp = $('<p></p>')
+tp.append(tb)
+td = $('<div></div>')
+td.addClass('content')
+td.append(tp)
+card.append(td)
+
+var list = $('.list')
+list.append(card)

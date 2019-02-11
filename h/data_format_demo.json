@@ -1,0 +1,24 @@
+
+every user will have a list of notes 
+every note element is going to have an 'id' and a 'data' field
+the id is unique for every note no matter the user
+[
+
+	{
+		"id":"123456",
+		"data":{
+			"title": "bazar today",
+			"text " : "have to buy eggs",
+			"img-link":"http://123.45.1.2/demo.jpg"
+		}
+	}
+	
+
+]
+
+----- data field ----
+{
+	"title": "bazar today",
+	"text " : "have to buy eggs",
+	"img-link":"http://123.45.1.2/demo.jpg"
+}
