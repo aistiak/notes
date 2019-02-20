@@ -54,6 +54,8 @@
 	<script type="text/javascript">
 
 
+       
+
 
 		$(document).ready(function(){
 			console.log('ready');
@@ -62,10 +64,19 @@
 
 
 			/**/
+	     	// if already loggedin with an account then wont stay on the login page
+	     	if(getCookie('token')!=''){
+
+	     		window.location.href ="/app2.html"
+	     	}
 
 
 
 		});
+
+        
+
+
 		$('#submit-btn').click(function(){
 			console.log('btn click');
 			$('#warning').show();
