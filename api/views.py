@@ -115,7 +115,8 @@ def addData(request):
 	data = request.POST.get('data')
 	token = request.POST.get('token')
 
-	
+	#data = data.replace("\'","$sq$")
+	#data = data.replace("\"","$dq$") 
 	#return HttpResponse('helo')
 
 	try:
@@ -126,7 +127,7 @@ def addData(request):
 		
 			# get the data from data base and append 
 		udo = UserData.objects.get(user=o)  # udo = UserData Object 
-		d = json.loads(udo.data.replace("\'", "\""))
+		d = json.loads(udo.data.replace("\'", "\"")) # tihis causes a problem 
 		t = json.loads(data)
 		#add an id to it 
 		r_id = random.randint(10000,99999)
@@ -194,6 +195,10 @@ def updateData(request):
 	data_no      = request.POST.get('id')
 	updated_data = request.POST.get('data')
 	token        = request.POST.get('token')
+
+	#updated_data = data.replace("\'","$sq$")
+	#updated_data = data.replace("\"","$dq$") 
+
 
 
 	try:

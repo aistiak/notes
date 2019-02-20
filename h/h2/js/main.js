@@ -183,7 +183,13 @@ $(document).on('mouseenter','.card',function() {
    
 	    		data = {}
 	    		data.title = title.html()
+	    		data.title = data.title.replace(/[']/g,"$sq$").replace(/["]/g,"$dq$")
+
+
 	    		data.text  = text.html()
+	    		data.text = data.text.replace(/[']/g,"$sq$").replace(/["]/g,"$dq$")
+	    		
+
 	    		data.id    = card.attr('id')
 	    		imgs = []
 	    		data.imgs = imgs
