@@ -50,6 +50,20 @@
 
 
   </script>
+  <script type="text/javascript">
+    
+            console.log("in validation script")
+            console.log(getCookie("token"))
+            $.post('http://127.0.0.1:8000/api/',{token:getCookie('token')},function(data){
+                console.log('logout : ' + data)
+                if(!IsJsonString(data)){
+                  console.log("is not json")
+                   window.location.href ="/login.html" 
+                }else{
+                  console.log("is json")
+                }
+           })
+  </script>
 
 
   <div class="main-top">

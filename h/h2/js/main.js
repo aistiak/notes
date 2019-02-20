@@ -72,8 +72,10 @@ function dltImage(imageName){
 $('#logoutbtn').on('click',function(){
 	$.post(logoutUrl,{token:getCookie('token')},function(data){
 		console.log('logout : ' + data)
+
+
 	})
-		//document.cookie = 'token='+';'
+		document.cookie = 'token='+';'
 		//document.cookie = 'pas='+password+';'  
 
 		console.log(getCookie("token"));
