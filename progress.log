@@ -6,13 +6,13 @@
 
 #done 
 
--> account creation methods done with email code varification 
+-> account creation methods done with email code varification [done]
 
 -> resource access andmodification is implemented using token instade of user cedentials 
 -> cros porblem solved by allowin cros for 127.0.0.1 in app settings.py
 
-# for rithu vai
+# problems
 
 
--> single and double quoutes in card text area causig problem in parsing
- 
+-> single and double quoutes in card text area causig problem in parsing [solved]
+-> quotes get multiplyed and s is replaced with ' (single quote)

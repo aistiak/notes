@@ -45,7 +45,7 @@ function createNewNote(title,text,id,images){
     titeldiv.css({'position': 'relative','padding': '5px'}) 
     var titleh4 = $('<h4>')
 
-    title = title.replace(/[$dq$]/g,"\"").replace(/[$sq$]/g,"\'")
+    title = title.replace(/(@dq!)/g,"\"").replace(/(@sq!)/g,"\'")
 
     titleh4.html(title)
 
@@ -91,7 +91,7 @@ function createNewNote(title,text,id,images){
 		'margin-right':'9px'
 	})
 
-	text = text.replace(/[$dq$]/g,"\"").replace(/[$sq$]/g,"\'")
+	text = text.replace(/(@dq!)/g,"\"").replace(/(@sq!)/g,"\'")
 
 	ptext.html(text)
 
@@ -328,10 +328,10 @@ function createNewNote(title,text,id,images){
     		bottomdiv.hide()
             data = {}
             data.title = titleh4.html();
-	        data.title = data.title.replace(/[']/g,"$sq$").replace(/["]/g,"$dq$")
+	        data.title = data.title.replace(/(')/g,"@sq!").replace(/(")/g,"@dq!")
            
             data.text  = ptext.html()
-            data.text  = data.text.replace(/[']/g,"$sq$").replace(/["]/g,"$dq$")
+            data.text  = data.text.replace(/(')/g,"@sq!").replace(/(")/g,"@dq!")
       
 
             imgs = []
