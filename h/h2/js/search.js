@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-        $(".container").highlight(["alu"])
+        
 		var input = $("#controllerInput")
         input.on("input",function(){
         	console.log("input changed")
@@ -8,6 +8,7 @@ $(document).ready(function(){
         	// if input field clear show again
                  g_arr.forEach(function(element){
                  	 $("#"+element.id).show()
+                   $(".cards").unmark()
                  	//element.show()
                  })
             if(input.val() == ""){
@@ -31,11 +32,12 @@ $(document).ready(function(){
                            $(".main-bottom").append(temp_cards_view)
                            key_match_buffer.forEach(function(element){
                            			addCard()
-                           }) */     
+                           }) */
                            
                      }else{
                      	$("#"+element.id).hide()
                      	//element.hide()
+                      $('.cards').mark(keyword)
                      }
             	 })
 /*                 var keyword = input.val()

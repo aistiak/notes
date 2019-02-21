@@ -13,6 +13,6 @@
 
 # problems
 
-
+->text hightight problem
 -> single and double quoutes in card text area causig problem in parsing [solved]
--> quotes get multiplyed and s is replaced with ' (single quote)
+-> quotes get multiplyed and s is replaced with ' (single quote) [solved]

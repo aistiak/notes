@@ -18,7 +18,11 @@
 	<script type="text/javascript" src="js/methods.js"></script>
 	<script type="text/javascript" src="js/loader.js"></script>
   <script type="text/javascript" src="js/search.js"></script>
-  <script type="text/javascript" src="jquery.highlight.js"></script>
+  <script type="text/javascript" src="js/hilight.js"></script>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.es6.js"></script>
+
+  <script type="text/javascript" src="js/jquery.highlight.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.6.4/jquery.contextMenu.min.js"></script>
 
@@ -81,7 +85,7 @@
   		<div class="row">
   			<div class="col-lg-6 col-lg-offset-3">
   				<div class="input-group">
-  					<input type="text" class="form-control" placeholder="Search" id="controllerInput"/> 
+  					<input type="text" class="form-control" name="search" placeholder="Search" id="controllerInput"/> 
   					<span class="input-group-btn">
   						<button class="btn btn-default" type="button" id="newcard">new</button>
   					</span>
@@ -104,7 +108,12 @@
   	</div>
 
   </div>
-
+  <style type="text/css">
+    mark{
+    background: orange;
+    color: black;
+}
+  </style>
 
 
 
