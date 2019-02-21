@@ -1,3 +1,3 @@
-timeout 6
+timeout 10
 taskkill -im microsoftedge.exe /f
 exit
