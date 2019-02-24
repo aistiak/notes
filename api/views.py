@@ -436,6 +436,31 @@ def change_pass_for_locked_user(request):
 
 
 # change pass (methods : change_user_pass will // will not use token need mail and pass )
+@csrf_exempt
+def change_pass_home_user(request):
+
+	mail = request.POST.get('mail')
+	old_pas = request.POST.get('old_pas')
+	new_pas = request.POST.get('new_pas')
+
+	#return HttpResponse(new_pas)
+
+	try:
+		u = User.objects.get(email=mail)
+
+		if u.pas == old_pas:
+			u.pas = new_pas
+			u.save()
+			return HttpResponse("ok")
+		else:
+			return HttpResponse("old pass incorrect")	
+	except Exception as e:
+
+		return HttpResponse("wrong email")
+
+
+
+
 
 
 # delete user (method  : del_user // will not use token needs user name asn pass)

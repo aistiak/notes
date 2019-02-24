@@ -13,5 +13,6 @@ urlpatterns = {
 	path('varifyuser',views.varifyUser,name='varifyUser'),
 	path('sau',views.sau,name='sau'),
 	path('forgot_pass',views.register_locked_temp_user,name='forgot_pass'),
-	path('recovery_code',views.change_pass_for_locked_user,name='recovery_code')
+	path('recovery_code',views.change_pass_for_locked_user,name='recovery_code'),
+	path('change_pass',views.change_pass_home_user,name='change_pass')
 }
