@@ -1,5 +1,7 @@
 var url = 'http://127.0.0.1:8000/api/login';
 
+var temp_user_mail_buffer = ""
+
 function getCookie2(name) {
   var value = "; " + document.cookie;
   var parts = value.split("; " + name + "=");
@@ -31,5 +33,13 @@ function IsJsonString(str) {
     return true;
 }
 
+function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
+}
 
 

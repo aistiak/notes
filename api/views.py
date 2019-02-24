@@ -26,7 +26,12 @@ def login(request):
 	 		tkh.save() 
 	 		# o.token+=','+new_token
 	 		# o.save()
-	 		return HttpResponse(str(new_token))	
+	 		response = {"token":new_token}
+	 		response = str(response).replace("\'","\"")
+	 		
+	 		return HttpResponse(str(response))
+	 	else:
+	 		return HttpResponse("credential err")	
 
 	except Exception as e:
 		return HttpResponse(str(e))
@@ -351,7 +356,7 @@ def send_varification_mail(mail,code):
 
 		frm = 'rudroiit@gmail.com'
 		to  = mail
-		pas = '01121994ar'
+		pas = 'thepasshaschanged'
 		server = smtplib.SMTP('smtp.gmail.com',587)
 		server.starttls()
 		server.login(frm,pas)
@@ -371,7 +376,11 @@ def send_varification_mail(mail,code):
 	# server.quit()
 
 
+# todo : api ends needed to be desingned 
 
+# forgot pass (methods : register_locked_temp_user , change_pass_for_locked_user)
+# change pass (methods : change_user_pass will // will not use token need mail and pass )
+# delete user (method  : del_user // will not use token needs user name asn pass)
 
 
 	
