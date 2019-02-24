@@ -378,8 +378,66 @@ def send_varification_mail(mail,code):
 
 # todo : api ends needed to be desingned 
 
+
 # forgot pass (methods : register_locked_temp_user , change_pass_for_locked_user)
+@csrf_exempt 
+def register_locked_temp_user(request):
+
+	try:
+		
+		# find the mail first
+		mail = request.POST.get('mail')
+
+		u = User.objects.get(email=mail)
+
+		temp_user = TempUser()
+		temp_user.name  = ''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for _ in range(5))
+		temp_user.pas   = ''
+		temp_user.email = mail
+		temp_user.code  = ''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for _ in range(16))
+		temp_user.save()
+
+	except Exception as e:
+		return HttpResponse(str(e))
+
+	try:
+		send_varification_mail(mail,temp_user.code)
+		return HttpResponse("ok")
+	except Exception as e:
+		return HttpResponse(str(e))
+
+
+
+@csrf_exempt
+def change_pass_for_locked_user(request):
+
+	try:
+		#pass
+		mail = request.POST.get('mail')
+		code = request.POST.get('code') 
+		pas  = request.POST.get('pas')
+
+	 
+
+		temp_user = TempUser.objects.get(email=mail,code=code)
+
+		if temp_user.code == code: # if  varification code matches then change the pass for the eamil holding user 
+			user = User.objects.get(email=mail)
+			user.pas = pas
+			user.save()
+            # deleting the temp user after changing the password 
+			temp_user.delete()
+
+			return HttpResponse("ok")
+
+	except Exception as e:
+		return HttpResponse(str(e))
+
+
+
 # change pass (methods : change_user_pass will // will not use token need mail and pass )
+
+
 # delete user (method  : del_user // will not use token needs user name asn pass)
 
 
