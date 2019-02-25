@@ -300,6 +300,10 @@ label:hover:before {
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript">
+  var forgot_pass_url = 'http://127.0.0.1:8000/api/forgot_pass'
+  var recovery_code_url = 'http://127.0.0.1:8000/api/recovery_code'
+</script>
 
 </head>
 <body>
@@ -464,8 +468,7 @@ label:hover:before {
 			//dummy_submit_form($(this));
 			// Dummy AJAX request (Replace this with your AJAX code)
 		  // If you don't want to use AJAX, remove this
-  	      //todo 
-
+  	   
 
           /*window.location.href = "http://google.com/";*/
 
@@ -474,9 +477,9 @@ label:hover:before {
           var userName = $('#lg_username').val();
           var password     = $('#lg_password').val();
 
-
+/*
           console.log('username :' + userName)
-          console.log('pass :' + password)
+          console.log('pass :' + password)*/
           /*make request to api */
           $.post(url,{'name':userName,'pas':password},function(data,status){
             /*if status is ok */
@@ -623,13 +626,30 @@ label:hover:before {
   
 	// Form Submission
   $("#forgot-password-form").submit(function() {
-  	remove_loading($(this));
+
+    var form_context = $(this)
+    form_success(form_context,"wait....")
+    document.cookie = 'temp_user_mail_buffer='+$('#fp_email').val()+';'
 
     if(options['useAJAX'] == true)
     {
 			// Dummy AJAX request (Replace this with your AJAX code)
 		  // If you don't want to use AJAX, remove this
-     dummy_submit_form($(this));
+      var mail = $("#fp_email").val()
+
+      $.post(forgot_pass_url,{'mail':mail},function(data){
+
+             console.log("data : " + data)
+            // todo
+            if(data == "ok"){
+               // redirecc to the forgot_pass_code_varification_page
+
+               window.location.href ="/recovery_code.html"
+
+            }else{
+               form_failed(form_context,"user with no such email exists !")
+            }
+      })
 
 		  // Cancel the normal submission.
 		  // If you don't want to use AJAX, remove this
@@ -678,6 +698,13 @@ label:hover:before {
   }
 
 })(jQuery);
+</script>
+<script type="text/javascript">
+        if(getCookie('token')!=''){
+
+        window.location.href ="/index.html"
+      }
+
 </script>
 </body>
 </html

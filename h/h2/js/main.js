@@ -8,6 +8,8 @@ $(document).ready(()=>{
 	updateUrl = 'http://127.0.0.1:8000/api/update'
 	dltUrl  = 'http://127.0.0.1:8000/api/del'
 	logoutUrl = 'http://127.0.0.1:8000/api/logout'
+	forgot_pass_url = 'http://127.0.0.1:8000/api/forgot_pass'
+	recovery_code_url = 'http://127.0.0.1:8000/api/recovery_code'
     updateGarray()
 // add a new card to screen 
 $("#newcard").on('click',()=>{

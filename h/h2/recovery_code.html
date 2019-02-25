@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>recovery_code</title>
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.6.4/jquery.contextMenu.min.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/util.js"></script>
+
+</head>
+<body>
+
+   <body>
+	<center>
+		<div style="margin-top: 100px" class="main"> 
+			<div id="final-msg">
+				<h3> Your password has changed  <br> you may <a href="/login.html">login</a></h3>
+			</div>
+			<div id="hide-last">
+				<div>
+					<h3> enter code </h3>
+				</div>
+				<div class="input-group mb-3">
+
+
+					<div class="input-group">
+						<input type="text" class="form-control"  placeholder="code" name="code" >
+						<input type="password" class="form-control"  id="password" placeholder="password" name="password"  style="margin-top: 10px">
+						<input type="password" class="form-control"  id="confirm_password" placeholder="confirm_password" name="confirm_password" style="margin-top: 10px" >
+
+					</div>
+					<div>
+						<input class="btn btn-primary" type="submit"  value="submit"  id="submit-btn" style="margin-top: 10px">
+
+					</div>
+					<div>
+						<h4 id="warn" style="color: red ;position: relative ; top: 10px" > </h4>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</center>
+
+	<script type="text/javascript">
+		$("#final-msg").hide()
+		console.log( getCookie("temp_user_mail_buffer"))
+		$("#submit-btn").on("click",function(){
+
+
+
+			var code = $("input[name='code']").val()
+			var mail = getCookie("temp_user_mail_buffer");
+
+            var password = $("#password").val();
+            var confirm_password  = $("#confirm_password").val();
+
+            if(password.length < 5){
+               $("#warn").html("password has to be atleast 5 character 	")
+               return false ;
+            }
+
+            if( password != confirm_password ){
+               
+               $("#warn").html("password do not match ")
+               return false ;
+            }
+            
+
+			var pram = {
+				'mail':mail,
+				'code':code,
+				'pas' : password
+			}
+			$.post('http://127.0.0.1:8000/api/recovery_code',pram,function(data){
+				console.log('mail respose : ' + data)
+				
+                if(data == "ok"){
+
+					$("#hide-last").hide()
+					$("#final-msg").show()
+                }else{
+                	$("#warn").html("code is incorrect ")
+                }
+
+			})
+			//$("#warn").html(" wrong code ")
+			// validate code 
+
+		})
+
+	</script>
+</body>
+</body>
+</html>

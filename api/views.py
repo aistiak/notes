@@ -388,6 +388,7 @@ def register_locked_temp_user(request):
 		# find the mail first
 		mail = request.POST.get('mail')
 
+
 		u = User.objects.get(email=mail)
 
 		temp_user = TempUser()
@@ -396,6 +397,8 @@ def register_locked_temp_user(request):
 		temp_user.email = mail
 		temp_user.code  = ''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for _ in range(16))
 		temp_user.save()
+
+		#return HttpResponse(str(temp_user))
 
 	except Exception as e:
 		return HttpResponse(str(e))
