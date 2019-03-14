@@ -476,6 +476,9 @@ label:hover:before {
 
           var userName = $('#lg_username').val();
           var password     = $('#lg_password').val();
+           
+          /* saving user name via cookie to show on navbar */
+          document.cookie='notes-username='+ $('#lg_username').val()+';';
 
 /*
           console.log('username :' + userName)
@@ -706,5 +709,6 @@ label:hover:before {
       }
 
 </script>
+
 </body>
 </html
